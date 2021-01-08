@@ -3,22 +3,22 @@ const recordes = function (string) {
 
     pontos = string.split(' ')
     
-    let menor = 0
-    let contRecorde = 0
+    let menorPontuacao = 0
+    let qtdRecordeBatidos = 0
     let recorde = parseFloat(pontos[0])
     for (i = 1; i < pontos.length; i++) {
-        let atual = parseFloat(pontos[i])
+        let pontuacaoAtual = parseFloat(pontos[i])
         
-        if (atual > recorde) {
-            contRecorde++
-            recorde = atual
+        if (pontuacaoAtual > recorde) {
+            qtdRecordeBatidos++
+            recorde = pontuacaoAtual
         }        
 
-        if (atual < pontos[menor]) {
-            menor = i
+        if (pontuacaoAtual < pontos[menorPontuacao]) {
+            menorPontuacao = i
         }
     }
-    const retorno = [contRecorde, menor+1]
+    const retorno = [qtdRecordeBatidos, menorPontuacao+1]
     console.log(retorno)
 }
 
