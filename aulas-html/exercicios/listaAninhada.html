@@ -1,0 +1,70 @@
+<h1>Projeto</h1>
+<ul class="tree">
+    <li>
+        <span wm-folder>backend</span>
+        <ul>
+            <li>
+                <span wm-folder>app</span>
+                <ul>
+                    <li>produto.js</li>
+                    <li>usuario.js</li>
+                    <li>venda.js</li>
+                </ul>
+            </li>
+            <li>
+                <span wm-folder>config</span>
+                <ul>
+                    <li>banco.js</li>
+                    <li>rotas.js</li>
+                    <li>servidor.js</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <span wm-folder>frontend</span>
+        <ul>
+            <li>
+                <span wm-folder>public</span>
+                <ul>
+                    <li>app.css</li>
+                    <li>app.js</li>
+                    <li>index.html</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+<script>
+    document.querySelectorAll('[wm-folder]').forEach(item => {
+        item.onclick = function() {
+            const next = item.nextElementSibling
+            const display = next.style.display
+            next.style.display = display === '' ? 'none' : ''
+        }
+    })
+    
+    {
+    // function recolheMenu(folderClass, childClass) {
+    //     document.querySelectorAll(folderClass).forEach(folder => {
+    //         folder.onclick = function() {
+    //             document.querySelectorAll(childClass).forEach(item => {
+    //                 if(item.style.display === '') {
+    //                     item.style.display = 'none'
+    //                 } else {
+    //                     item.style.display = ''
+    //                 }
+    //             })
+    //         }
+    //     })
+    // }
+
+    // recolheMenu('.backend-folder', '.backend')
+    // recolheMenu('.app-folder', '.app')
+    // recolheMenu('.config-folder', '.config')
+    // recolheMenu('.frontend-folder', '.frontend')
+    // recolheMenu('.public-folder', '.public')
+    }   
+</script>
