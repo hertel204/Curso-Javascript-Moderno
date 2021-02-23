@@ -44,6 +44,11 @@
     p {
         position: absolute;
         display: none;
+        width: 600px;
+    }
+
+    div {
+        overflow: hidden;
     }
 
     .circular {
@@ -70,19 +75,46 @@
 </style>
 
 <script>
-    function slide(xInicio, xFim) {
-        let elemento = document.querySelector('p')
-        elemento.style.top = 100
-        elemento.style.left = xInicio
-        elemento.style.display = 'block'
-        // let deltaPx = 30000/(xInicio - xFim)
-        // console.log(deltaPx)
-        for(let i = xInicio; i >= xFim; i--) {
+    function slide(elementos, tempo) {
+        
+        const qtdElementos = elementos.length - 1
+        let iterador = 0        
+        
+        // Move o item no fps e deltaPx determinados. Para de mover quando left igual a left Fim.
+        let move = function(item) {
+            const xInicio = window.innerWidth
+            const xFim = -513
+
+            // Frames por segundo = 200
+            const fps = 1000/200
+            // Delta de pixels por frame = deltaPxTotal / qtdFrames
+            let deltaPx = (xInicio - xFim) / (tempo/fps)
+            item.style.left = xInicio
+            item.style.display = 'block'
+            
+            // console.log(xInicio, xFim)
+            
+            const rep = setInterval(() => {
+                if(parseInt(item.style.left) === xFim) {
+                    item.style.display = 'none'
+                    clearInterval(rep)
+                }
+                item.style.left = ((parseInt(item.style.left)) - deltaPx) < xFim ?
+                    xFim : parseInt(item.style.left) - deltaPx
+            }, fps)
+
             setTimeout(() => {
-                elemento.style.left = i
-            }, 1000)
-            // console.log(i)
+                if(iterador >= qtdElementos) {
+                    iterador = 0
+                    move(elementos[iterador])
+                } else {
+                    iterador++
+                    move(elementos[iterador])
+                }
+            }, tempo)
         }
+        move(elementos[iterador])
     }
-    slide(1000, 100)
+    const elementos = Array.from(document.querySelectorAll('[wm-slider] > p'))
+    slide(elementos, 2000)
 </script>
