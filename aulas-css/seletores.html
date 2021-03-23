@@ -6,7 +6,16 @@
     <title>CSS Selectors</title>
     <link rel="stylesheet" href="css/tag.css">
     <style>
-        /* ... */
+        /* FAZER TESTES DE SELETORES - EXERCITAR!!!!!!*/ 
+        ul > :nth-child(even) {
+            color: #ff0;
+            background-color: #f77;
+        }
+
+        ul > :nth-child(odd):not(label) {
+            color: #f77;
+            background-color: #ff0;
+        }
     </style>
 </head>
 
@@ -17,6 +26,11 @@
             <ul class='tag' feira='casa'>
                 <li>Arroz</li>
                 <li>Feijão</li>
+                <li>Abobora</li>
+                <li>Cebola</li>
+                <li>Melancia</li>
+                <li>Requeijão</li>
+                <li>Pêssego</li>
             </ul>
             <ul class='tag' feira='escritorio empresa'>
                 <li>Café</li>
@@ -29,7 +43,7 @@
             </ol>
             <div id='aninhado' class='tag'>
                 <div class="tag">
-                    <section class='tag'>
+                    <section class='tag nolabel'>
                         <span class='tag'>1</span>
                         <p class='tag'>2</p>
                         <span class='tag'>3</span>
